@@ -6,7 +6,7 @@ MVP de catálogo y cobro con QR para floristería. Monorepo Flask (Cloud Run) + 
 
 ```
 /backend   Flask API (Python 3.12)
-/frontend  React + Vite (scaffold)
+/frontend  React + Vite (catálogo → QR → ticket + tablero florista)
 ```
 
 ## Requisitos
@@ -31,6 +31,21 @@ python -m flask --app app run --port 8080
 ```
 
 3. Health check: `GET /health` → `{"status":"ok"}`
+
+## Frontend (local)
+
+En otra terminal (Vite hace proxy de `/api` → `http://127.0.0.1:8080`):
+
+```bash
+cd frontend
+cp .env.example .env   # completa VITE_FIREBASE_* cuando tengas web app config
+npm install
+npm run dev
+```
+
+Abre http://localhost:5173 — catálogo `/`, pago `/pago/:id`, ticket `/confirmacion/:id`, florista `/florista`.
+
+Sin `VITE_FIREBASE_*` el UI usa catálogo seed local y hace poll a la API cada 2s (en lugar de `onSnapshot`).
 
 ## Seed de productos
 
