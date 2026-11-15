@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Client: read-only for products and orders. All writes via Admin SDK (backend).
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /orders/{orderId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Deny everything else from clients (webhook_events, counters, etc.)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

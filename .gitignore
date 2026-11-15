@@ -1,0 +1,51 @@
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+service-account*.json
+*-firebase-adminsdk*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+*.local
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+.cursor/
+
+# Firebase / GCP
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.gcloud/
+
+# Legacy reference (not part of MVP monorepo)
+RosasEternasBackend/
+RosasEternasVistas/
